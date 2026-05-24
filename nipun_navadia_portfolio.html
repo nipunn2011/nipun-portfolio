@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nipun Navadia | AI Engineer · Data Scientist · Cybersecurity Researcher</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.54/build/spline-viewer.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#05070F;--s1:#0A0D1A;--s2:#0F1525;--bd:rgba(255,255,255,0.07);
+  --t1:#F0F4FF;--t2:#8892A4;--t3:#4B5563;
+  --blue:#4F8EF7;--cyan:#22D3EE;--indigo:#818CF8;--teal:#2DD4BF;--amber:#FCD34D;--green:#34D399;
+  --ff:'Inter',sans-serif;--fd:'Satoshi',sans-serif;--fm:'Space Grotesk',sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--t1);font-family:var(--ff);font-size:16px;font-weight:400;line-height:1.75;letter-spacing:-0.01em;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2.5rem;
+  background:rgba(5,7,15,0.75);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--bd);
+}
+.logo{font-family:var(--fd);font-weight:800;font-size:1.05rem;letter-spacing:-0.03em;color:var(--t1);line-height:1}
+.logo-dot{color:var(--cyan)}
+.logo-brand{font-family:var(--fm);font-size:0.65rem;font-weight:500;color:var(--cyan);letter-spacing:0.14em;text-transform:uppercase;vertical-align:middle;margin-left:0.06em;opacity:0.85}
+.nav-pills{display:flex;gap:0.2rem}
+.nav-pills a{color:var(--t2);text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:-0.01em;padding:0.35rem 0.85rem;border-radius:100px;transition:all 0.2s}
+.nav-pills a:hover{color:var(--t1);background:rgba(255,255,255,0.06)}
+.nav-hire{background:linear-gradient(135deg,var(--blue),var(--indigo));color:#fff;border:none;padding:0.5rem 1.25rem;border-radius:100px;font-family:var(--ff);font-size:0.82rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform 0.2s,opacity 0.2s}
+.nav-hire:hover{transform:translateY(-1px);opacity:0.9}
+
+/* HERO - 21st.dev Spline Scene pattern */
+#hero{
+  width:100%;min-height:100vh;
+  background:#000;
+  position:relative;overflow:hidden;
+  display:flex;align-items:stretch;
+}
+
+/* Spotlight SVG */
+.spotlight{
+  position:absolute;pointer-events:none;z-index:1;
+  top:-200px;left:-100px;
+  width:800px;height:800px;
+  background:radial-gradient(ellipse at center,
+    rgba(79,142,247,0.18) 0%,
+    rgba(79,142,247,0.06) 35%,
+    transparent 70%
+  );
+  animation:spotDrift 8s ease-in-out infinite alternate;
+}
+.spotlight2{
+  position:absolute;pointer-events:none;z-index:1;
+  bottom:-100px;left:15%;
+  width:500px;height:500px;
+  background:radial-gradient(ellipse at center,
+    rgba(34,211,238,0.09) 0%,
+    transparent 65%
+  );
+  animation:spotDrift2 11s ease-in-out infinite alternate;
+}
+@keyframes spotDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,40px) scale(1.08)}}
+@keyframes spotDrift2{0%{transform:translate(0,0)}100%{transform:translate(-40px,-30px)}}
+
+/* Grid texture overlay */
+.hero-grid{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(79,142,247,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(79,142,247,0.03) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,black 20%,transparent 100%);
+}
+
+/* Two-column layout */
+.hero-cols{
+  display:flex;width:100%;min-height:100vh;align-items:center;
+  position:relative;z-index:2;padding-top:5rem;
+}
+
+/* LEFT - text side */
+.hero-left{
+  flex:1;padding:5rem 3rem 4rem 4rem;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:10;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  border:1px solid rgba(34,211,238,0.22);background:rgba(34,211,238,0.05);
+  padding:0.38rem 1rem;border-radius:100px;
+  font-size:0.65rem;font-weight:600;font-family:var(--fm);color:var(--cyan);letter-spacing:0.18em;text-transform:uppercase;
+  margin-bottom:2rem;width:fit-content;
+  animation:fadeUp 0.8s ease both;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.35;transform:scale(1.6)}}
+
+/* Gradient text */
+.hero-title{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(4rem,9vw,7.5rem);
+  letter-spacing:-0.04em;line-height:0.92;
+  background:linear-gradient(to bottom, #FAFAFA 0%, #A3A3A3 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:1.25rem;
+  animation:fadeUp 0.8s 0.1s ease both;
+}
+.hero-title .accent{
+  background:linear-gradient(135deg,var(--cyan) 0%,var(--blue) 60%,var(--indigo) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* Role typewriter */
+.hero-role{
+  font-size:1.05rem;color:rgba(163,163,163,0.85);font-weight:300;
+  min-height:1.8em;margin-bottom:1.5rem;
+  animation:fadeUp 0.8s 0.2s ease both;
+}
+.hero-role em{color:var(--cyan);font-style:normal;font-weight:500}
+
+/* Description */
+.hero-desc{
+  color:rgba(212,212,212,0.85);font-weight:400;line-height:1.85;
+  max-width:440px;margin-bottom:2.5rem;font-size:0.97rem;
+  animation:fadeUp 0.8s 0.3s ease both;
+}
+.hero-desc strong{color:#fff;font-weight:500}
+
+/* Scholar badge row */
+.scholar-row{
+  display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2.5rem;
+  animation:fadeUp 0.8s 0.35s ease both;
+}
+.scholar-badge{
+  display:flex;align-items:center;gap:0.4rem;
+  background:rgba(252,211,77,0.08);border:1px solid rgba(252,211,77,0.2);
+  color:var(--amber);font-size:0.75rem;font-weight:600;
+  padding:0.35rem 0.9rem;border-radius:100px;
+}
+
+.hero-btns{
+  display:flex;gap:0.75rem;flex-wrap:wrap;
+  animation:fadeUp 0.8s 0.4s ease both;
+}
+.btn-p{
+  background:linear-gradient(135deg,var(--blue),var(--indigo));
+  color:#fff;padding:0.85rem 1.85rem;border-radius:10px;
+  font-weight:700;font-size:0.9rem;text-decoration:none;display:inline-block;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 0 30px rgba(79,142,247,0.3);
+}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(79,142,247,0.45)}
+.btn-o{
+  color:var(--t1);border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);
+  padding:0.85rem 1.6rem;border-radius:10px;font-weight:500;font-size:0.9rem;
+  text-decoration:none;display:inline-block;transition:all 0.2s;
+}
+.btn-o:hover{border-color:rgba(79,142,247,0.4);background:rgba(79,142,247,0.07)}
+
+/* RIGHT - Spline 3D scene side */
+.hero-right{
+  flex:1;position:relative;overflow:hidden;min-height:600px;
+}
+.hero-right spline-viewer{
+  width:100%;height:100%;position:absolute;inset:0;
+}
+/* Hide Spline watermark */
+.hero-right spline-viewer::part(logo),
+.hero-right spline-viewer::part(watermark){display:none!important}
+spline-viewer #logo,spline-viewer [class*="logo"],spline-viewer [class*="watermark"],
+spline-viewer a[href*="spline"]{display:none!important;opacity:0!important;pointer-events:none!important}
+/* Gradient fade on left edge of 3D panel to blend */
+.hero-right::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:120px;
+  background:linear-gradient(to right,#000,transparent);z-index:5;pointer-events:none;
+}
+
+/* Loading state for Spline */
+.spline-loader{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:1rem;z-index:3;
+  background:radial-gradient(ellipse 80% 80% at 60% 50%,rgba(79,142,247,0.06),transparent);
+}
+.spline-loader-ring{
+  width:48px;height:48px;border-radius:50%;
+  border:2px solid rgba(79,142,247,0.15);
+  border-top-color:var(--blue);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spline-loader-text{font-size:0.75rem;color:var(--t3);letter-spacing:0.1em;text-transform:uppercase}
+
+
+
+100%{opacity:0;transform:scaleY(0.2)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── STRIP ── */
+.strip{background:var(--s1);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:1.75rem 0;display:flex;justify-content:center}
+.strip-inner{display:flex;flex-wrap:wrap;justify-content:center}
+.si{padding:0.75rem 2.5rem;text-align:center;position:relative}
+.si+.si::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);height:40px;width:1px;background:var(--bd)}
+.snum{font-family:var(--fd);font-size:2.6rem;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.slbl{font-size:0.68rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.15rem}
+
+/* ── SHARED ── */
+.wrap{max-width:1080px;margin:0 auto;padding:6rem 2rem}
+.stag{font-size:0.68rem;font-weight:600;font-family:var(--fm);color:var(--cyan);letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}
+.stag::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.sh{font-family:var(--fd);font-size:clamp(2.5rem,4.5vw,3.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.02;margin-bottom:0.75rem}
+.ssub{color:var(--t2);max-width:500px;font-weight:400;line-height:1.85;margin-bottom:3rem}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent)}
+
+/* ── ABOUT ── */
+.about-2col{display:grid;grid-template-columns:1.15fr 1fr;gap:4rem;align-items:start}
+.about-p{color:var(--t2);font-weight:400;letter-spacing:-0.01em;line-height:1.95;margin-bottom:1.25rem}
+.about-p strong{color:var(--t1);font-weight:500}
+.pill-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.pill{display:inline-block;background:rgba(79,142,247,0.07);border:1px solid rgba(79,142,247,0.18);color:#93C5FD;font-size:0.75rem;font-weight:500;padding:0.3rem 0.8rem;border-radius:100px}
+.feat-cards{display:flex;flex-direction:column;gap:0.85rem}
+.fc{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1.25rem 1.5rem;transition:border-color 0.25s,transform 0.25s;position:relative;overflow:hidden}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity 0.3s}
+.fc:hover{border-color:rgba(34,211,238,0.25);transform:translateX(4px)}
+.fc:hover::before{opacity:1}
+.fc-ico{font-size:1.1rem;margin-bottom:0.4rem}
+.fc-t{font-size:0.95rem;font-weight:700;font-family:var(--fd);letter-spacing:-0.02em;margin-bottom:0.2rem}
+.fc-d{font-size:0.8rem;color:var(--t2);line-height:1.6}
+
+/* ── EDUCATION ── */
+.edu-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.ec{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:1.75rem;transition:transform 0.2s,border-color 0.2s;position:relative;overflow:hidden}
+.ec:hover{transform:translateY(-4px);border-color:rgba(129,140,248,0.3)}
+.ec-glow{position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;filter:blur(35px);opacity:0.18;pointer-events:none}
+.ec-inst{font-size:0.62rem;font-weight:600;font-family:var(--fm);color:var(--indigo);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.6rem}
+.ec-deg{font-family:var(--fd);font-size:1.25rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:0.25rem}
+.ec-field{font-size:0.82rem;color:var(--cyan);margin-bottom:0.6rem;font-weight:500}
+.ec-date{font-size:0.72rem;color:var(--t3);margin-bottom:0.75rem}
+.ec-d{font-size:0.8rem;color:var(--t2);line-height:1.7}
+.ec-tag{display:inline-block;background:rgba(129,140,248,0.08);border:1px solid rgba(129,140,248,0.18);color:var(--indigo);font-size:0.68rem;padding:0.2rem 0.55rem;border-radius:4px;margin:0.15rem 0.15rem 0 0}
+
+/* ── EXPERIENCE ── */
+.exp-tl{position:relative;padding-left:2.25rem}
+.exp-tl::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--blue),var(--indigo),transparent)}
+.exp-block{position:relative;padding:0 0 3rem 2.25rem}
+.exp-dot{position:absolute;left:-2.7rem;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 14px currentColor}
+.exp-when{font-size:0.65rem;font-family:var(--fm);color:var(--t3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem}
+.exp-title{font-family:var(--fd);font-size:1.3rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.15rem}
+.exp-co{font-size:0.85rem;color:var(--cyan);font-weight:500;margin-bottom:0.9rem}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.exp-bullets li{font-size:0.85rem;color:var(--t2);line-height:1.75;padding-left:1.25rem;position:relative;font-weight:300}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--blue);font-size:0.75rem;top:0.1rem}
+.exp-bullets li strong{color:var(--t1);font-weight:500}
+.exp-chips{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.85rem}
+.chip{background:rgba(34,211,238,0.06);border:1px solid rgba(34,211,238,0.14);color:var(--cyan);font-size:0.68rem;padding:0.2rem 0.6rem;border-radius:4px;font-weight:500}
+
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem}
+.pc{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:1.75rem;transition:all 0.25s;position:relative;overflow:hidden;cursor:default}
+.pc.wide{grid-column:span 2}
+.pc:hover{border-color:rgba(79,142,247,0.3);transform:translateY(-3px)}
+.pc::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,142,247,0.05),transparent 60%);opacity:0;transition:opacity 0.3s;pointer-events:none}
+.pc:hover::after{opacity:1}
+.pc-head{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem;position:relative;z-index:1}
+.pc-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ico-b{background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.2)}
+.ico-c{background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.18)}
+.ico-p{background:rgba(129,140,248,0.08);border:1px solid rgba(129,140,248,0.18)}
+.pc-name{font-family:var(--fd);font-size:1.1rem;font-weight:700;letter-spacing:-0.03em;line-height:1.15;margin-bottom:0.2rem}
+.pc-cat{font-size:0.7rem;color:var(--t3)}
+.pc-desc{font-size:0.85rem;color:var(--t2);line-height:1.75;margin-bottom:1rem;position:relative;z-index:1;font-weight:400}
+.pc-kpis{display:flex;gap:2rem;margin-bottom:0.85rem;position:relative;z-index:1}
+.kpi-val{font-family:var(--fd);font-size:1.6rem;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.kpi-lbl{font-size:0.68rem;color:var(--t3)}
+.pc-stack{display:flex;flex-wrap:wrap;gap:0.3rem;position:relative;z-index:1}
+.stk{background:rgba(255,255,255,0.04);border:1px solid var(--bd);color:var(--t2);font-size:0.68rem;padding:0.2rem 0.5rem;border-radius:4px}
+
+/* ── RESEARCH ── */
+#research{background:var(--s1)}
+.research-inner{max-width:1080px;margin:0 auto;padding:6rem 2rem}
+.scholar-stats{display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
+.ss-card{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:1.25rem 1.75rem;text-align:center;flex:1;min-width:120px}
+.ss-num{font-family:var(--fd);font-size:3rem;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--amber),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.ss-lbl{font-size:0.7rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem}
+.pub-list{display:flex;flex-direction:column;gap:1rem}
+.pub{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:1.5rem 1.75rem;transition:border-color 0.25s,transform 0.2s;position:relative;overflow:hidden}
+.pub:hover{border-color:rgba(252,211,77,0.22);transform:translateX(4px)}
+.pub::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--amber),var(--cyan));opacity:0;transition:opacity 0.3s;border-radius:0 2px 2px 0}
+.pub:hover::before{opacity:1}
+.pub-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.5rem}
+.pub-title{font-family:var(--fd);font-size:0.98rem;font-weight:700;letter-spacing:-0.02em;line-height:1.3;color:var(--t1)}
+.pub-cite{display:inline-flex;align-items:center;gap:0.35rem;background:rgba(252,211,77,0.08);border:1px solid rgba(252,211,77,0.2);color:var(--amber);font-size:0.72rem;font-weight:700;padding:0.25rem 0.65rem;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.pub-venue{font-size:0.72rem;font-family:var(--fm);color:var(--indigo);margin-bottom:0.4rem;font-style:normal;opacity:0.75;letter-spacing:0.01em}
+.pub-authors{font-size:0.76rem;color:var(--t3);margin-bottom:0.5rem;line-height:1.5}
+.pub-authors strong{color:var(--cyan);font-weight:600}
+.pub-tags{display:flex;gap:0.35rem;flex-wrap:wrap}
+.pub-tag{background:rgba(129,140,248,0.07);border:1px solid rgba(129,140,248,0.15);color:var(--indigo);font-size:0.67rem;padding:0.18rem 0.5rem;border-radius:4px}
+.pub-year{font-size:0.7rem;color:var(--t3);flex-shrink:0}
+
+/* ── SKILLS ── */
+.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.sk-group{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1.5rem}
+.sk-cat{font-size:0.65rem;font-weight:600;font-family:var(--fm);color:var(--t2);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.sk-dot{width:7px;height:7px;border-radius:2px;display:inline-block}
+.sk-b{background:rgba(79,142,247,0.07);border:1px solid rgba(79,142,247,0.18);color:#93C5FD;display:inline-block;font-size:0.76rem;font-weight:500;padding:0.3rem 0.75rem;border-radius:100px;margin:0.2rem;transition:transform 0.15s}
+.sk-b:hover{transform:scale(1.06)}
+.sk-c{background:rgba(34,211,238,0.06);border:1px solid rgba(34,211,238,0.16);color:#67E8F9;display:inline-block;font-size:0.76rem;font-weight:500;padding:0.3rem 0.75rem;border-radius:100px;margin:0.2rem;transition:transform 0.15s}
+.sk-c:hover{transform:scale(1.06)}
+.sk-i{background:rgba(129,140,248,0.07);border:1px solid rgba(129,140,248,0.17);color:#C4B5FD;display:inline-block;font-size:0.76rem;font-weight:500;padding:0.3rem 0.75rem;border-radius:100px;margin:0.2rem;transition:transform 0.15s}
+.sk-i:hover{transform:scale(1.06)}
+.sk-t{background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.17);color:#5EEAD4;display:inline-block;font-size:0.76rem;font-weight:500;padding:0.3rem 0.75rem;border-radius:100px;margin:0.2rem;transition:transform 0.15s}
+.sk-t:hover{transform:scale(1.06)}
+
+/* ── CONTACT ── */
+#contact{text-align:center}
+.ct-box{background:var(--s1);border:1px solid var(--bd);border-radius:24px;padding:4rem 2.5rem;max-width:620px;margin:0 auto;position:relative;overflow:hidden}
+.ct-box::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(79,142,247,0.1),transparent 70%);pointer-events:none}
+.ct-avail{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.2);color:var(--teal);font-size:0.75rem;font-weight:600;padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.5rem;position:relative}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:blink 2s infinite}
+.ct-title{font-family:var(--fd);font-size:3rem;font-weight:900;letter-spacing:-0.04em;margin-bottom:0.75rem;position:relative}
+.ct-sub{color:var(--t2);margin-bottom:2rem;font-weight:300;position:relative;line-height:1.8}
+.ct-links{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;position:relative}
+.cl{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid var(--bd);background:transparent;color:var(--t1);padding:0.65rem 1.2rem;border-radius:10px;font-size:0.85rem;font-weight:500;text-decoration:none;transition:all 0.2s;font-family:var(--ff)}
+.cl:hover{border-color:var(--blue);background:rgba(79,142,247,0.07);color:var(--blue)}
+
+footer{border-top:1px solid var(--bd);padding:2rem;text-align:center;color:var(--t3);font-size:0.78rem;max-width:1080px;margin:0 auto}
+
+@media(max-width:900px){
+  .hero-cols{flex-direction:column}
+  .hero-left{padding:5rem 2rem 2rem}
+  .hero-right{min-height:380px;width:100%}
+  .hero-right::before{display:none}
+}
+@media(max-width:760px){
+  .about-2col,.edu-row,.proj-grid,.sk-grid{grid-template-columns:1fr}
+  .pc.wide{grid-column:span 1}
+  .strip-inner{flex-wrap:wrap}
+  .si+.si::before{display:none}
+  nav{padding:1rem 1.25rem}
+  .nav-pills{display:none}
+  .wrap,.research-inner{padding:4rem 1.25rem}
+  .scholar-stats{gap:0.6rem}
+  .pub-top{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Nipun<span class="logo-dot">.</span><span class="logo-brand">cyberai</span></div>
+  <div class="nav-pills">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="mailto:nipunnavadia@gmail.com" class="nav-hire">Hire Me →</a>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO - serafim/splite pattern
+     Card bg-black/[0.96] · Spotlight · flex h-full
+     Left: text z-10 · Right: SplineScene
+══════════════════════════════════════════ -->
+<section id="hero">
+  <!-- Spotlight effects (from 21st.dev Spotlight component) -->
+  <div class="spotlight"></div>
+  <div class="spotlight2"></div>
+  <!-- Grid texture -->
+  <div class="hero-grid"></div>
+
+  <div class="hero-cols">
+    <!-- LEFT - text content -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="live-dot"></span>
+        Open to Full-Time · Dec 2026
+      </div>
+
+      <!-- bg-clip-text from-neutral-50 to-neutral-400 -->
+      <h1 class="hero-title">
+        Nipun<br>
+        <span class="accent">Navadia</span>
+      </h1>
+
+      <div class="hero-role">
+        <em id="roleEl">Data Scientist &amp; AI Engineer</em>
+      </div>
+
+      <!-- .text-neutral-300 from splite -->
+      <p class="hero-desc">
+        <strong>Published researcher · 43 citations · h-index 4.</strong><br>
+        Triple-degree technologist with 4+ years at Capgemini building enterprise security systems and ML pipelines, now finishing MS Data Science at Pace University.
+      </p>
+
+      <div class="scholar-row">
+        <span class="scholar-badge">⭐ 43 Citations</span>
+        <span class="scholar-badge">h-index 4</span>
+        <span class="scholar-badge">9 Publications</span>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#projects" class="btn-p">View Projects</a>
+        <a href="#research" class="btn-o">Research ↗</a>
+        <a href="mailto:nipunnavadia@gmail.com" class="btn-o">Contact</a>
+      </div>
+    </div>
+
+    <!-- RIGHT - SplineScene -->
+    <div class="hero-right" id="splineWrap">
+      <div class="spline-loader" id="splineLoader">
+        <div class="spline-loader-ring"></div>
+        <div class="spline-loader-text">Loading 3D Scene</div>
+      </div>
+      <!-- Cover Spline watermark -->
+      <div style="position:absolute;bottom:0;right:0;width:200px;height:60px;background:linear-gradient(to top,#000,transparent);z-index:10;pointer-events:none"></div>
+      <!-- Spline robot scene from serafim/splite component -->
+      <spline-viewer
+        url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+        style="width:100%;height:100%;position:absolute;inset:0;"
+        loading="lazy"
+        events-target="global"
+      ></spline-viewer>
+    </div>
+  </div>
+
+</section>
+
+<!-- STATS STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="si"><div class="snum" data-t="43">0</div><div class="slbl">Citations</div></div>
+    <div class="si"><div class="snum" data-t="4">0</div><div class="slbl">h-index</div></div>
+    <div class="si"><div class="snum" data-t="9">0</div><div class="slbl">Publications</div></div>
+    <div class="si"><div class="snum" data-t="4">0</div><div class="slbl">Years Capgemini</div></div>
+    <div class="si"><div class="snum" data-t="750">0</div><div class="slbl">K+ Vulns Remediated</div></div>
+    <div class="si"><div class="snum" data-t="97">0</div><div class="slbl">% Risk Reduction</div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<div class="wrap" id="about">
+  <div class="stag">About Me</div>
+  <h2 class="sh">Where Security Meets<br>Intelligence</h2>
+  <div class="about-2col">
+    <div>
+      <p class="about-p">I'm <strong>Nipun Navadia</strong>, a published AI researcher and cybersecurity practitioner, completing my <strong>MS in Data Science at Pace University</strong> (Dec 2026), while holding an <strong>MTech in Software Systems from BITS Pilani</strong> and a BTech in Computer Science.</p>
+      <p class="about-p">At <strong>Capgemini</strong>, I spent 4 years building enterprise security systems: investigating high-priority incidents alongside CISOs and DPOs, eliminating 750K+ vulnerabilities, and automating operations across 20,000+ machines. I know what shipping under real pressure means.</p>
+      <p class="about-p">In parallel I've been <strong>publishing peer-reviewed research</strong> on AI, deep learning, IoT security, and autonomous systems. 43 citations, h-index 4. My 2025 papers on Explainable AI for IoT intrusion detection reflect where I'm headed: intelligent, interpretable security systems.</p>
+      <p class="about-p">Based in <strong>New York, NY</strong>. Open to full-time roles in AI/ML engineering, data science, and cybersecurity, especially where they intersect.</p>
+      <div class="pill-row">
+        <span class="pill">New York, NY</span>
+        <span class="pill">nipunnavadia@gmail.com</span>
+        <span class="pill">732-318-1705</span>
+        <span class="pill">Google Scholar ↗</span>
+      </div>
+    </div>
+    <div class="feat-cards">
+      <div class="fc"><div class="fc-ico">📚</div><div class="fc-t">Published Researcher</div><div class="fc-d">9 publications across AI, cybersecurity, IoT, and deep learning. 43 citations, h-index 4, i10-index 2.</div></div>
+      <div class="fc"><div class="fc-ico">🛡️</div><div class="fc-t">Enterprise Security Veteran</div><div class="fc-d">4 years in SOC operations, incident response, SIEM analysis, and large-scale vulnerability management at Capgemini.</div></div>
+      <div class="fc"><div class="fc-ico">🤖</div><div class="fc-t">Applied ML Builder</div><div class="fc-d">Classification benchmarking, time-series forecasting, explainable AI. Hands-on with Python, PyTorch, scikit-learn.</div></div>
+      <div class="fc"><div class="fc-ico">⚡</div><div class="fc-t">Automation at Scale</div><div class="fc-d">PowerShell automation rebooting 20,000 machines. I systematically replace manual work with intelligent systems.</div></div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<div class="wrap" id="education">
+  <div class="stag">Education</div>
+  <h2 class="sh">Triple-Degree Foundation</h2>
+  <p class="ssub">Software engineering depth, AI/ML methods, and enterprise security expertise, across three institutions on two continents.</p>
+  <div class="edu-row">
+    <div class="ec">
+      <div class="ec-glow" style="background:var(--cyan)"></div>
+      <div class="ec-inst">Pace University · New York, USA</div>
+      <div class="ec-deg">Master of Science</div>
+      <div class="ec-field">Data Science</div>
+      <div class="ec-date">Graduating Dec 2026</div>
+      <div class="ec-d">Seidenberg School of CS &amp; Information Systems. Machine learning, statistical modeling, AI engineering, data pipelines.</div>
+      <div style="margin-top:0.75rem"><span class="ec-tag">Machine Learning</span><span class="ec-tag">Statistics</span><span class="ec-tag">AI Engineering</span></div>
+    </div>
+    <div class="ec">
+      <div class="ec-glow" style="background:var(--indigo)"></div>
+      <div class="ec-inst">BITS Pilani · India (WILP)</div>
+      <div class="ec-deg">Master of Technology</div>
+      <div class="ec-field">Software Systems</div>
+      <div class="ec-date">Completed Jul 2024</div>
+      <div class="ec-d">Work-Integrated Learning Program. Advanced software engineering, system design, and enterprise architecture alongside industry experience.</div>
+      <div style="margin-top:0.75rem"><span class="ec-tag">Software Architecture</span><span class="ec-tag">Systems Design</span></div>
+    </div>
+    <div class="ec">
+      <div class="ec-glow" style="background:var(--blue)"></div>
+      <div class="ec-inst">AKTU · Dronacharya Group · India</div>
+      <div class="ec-deg">Bachelor of Technology</div>
+      <div class="ec-field">Computer Science &amp; Engineering</div>
+      <div class="ec-date">Completed Sep 2020</div>
+      <div class="ec-d">Strong CS fundamentals in algorithms, data structures, networking, and operating systems.</div>
+      <div style="margin-top:0.75rem"><span class="ec-tag">Computer Science</span><span class="ec-tag">Networking</span></div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<div class="wrap" id="experience">
+  <div class="stag">Professional Experience</div>
+  <h2 class="sh">4 Years at Capgemini</h2>
+  <p class="ssub">From software engineer to associate consultant, shipping at enterprise scale across security operations, automation, and data intelligence.</p>
+  <div class="exp-tl">
+    <div class="exp-block">
+      <div class="exp-dot" style="background:var(--cyan);color:var(--cyan)"></div>
+      <div class="exp-when">Jul 2023 – Jan 2025 · 1.5 yrs</div>
+      <div class="exp-title">Associate Consultant</div>
+      <div class="exp-co">Capgemini</div>
+      <ul class="exp-bullets">
+        <li>Investigated <strong>high-priority security incidents</strong> alongside CISOs, DPOs, and CISAs using Splunk SIEM and forensics tools (Magnet AXIOM, Autopsy), from evidence acquisition through executive-ready remediation reports.</li>
+        <li>Guided <strong>Level 1 &amp; Level 2 SOC teams</strong> resolving security alerts, analyzing SIEM logs with SQL queries and escalating critical incidents using Splunk ES and CrowdStrike Falcon.</li>
+        <li>Performed <strong>statistical analysis in Python &amp; Pandas</strong> to identify incident trends, informing proactive improvements to enterprise threat posture.</li>
+      </ul>
+      <div class="exp-chips">
+        <span class="chip">Splunk ES</span><span class="chip">CrowdStrike Falcon</span><span class="chip">Magnet AXIOM</span><span class="chip">Autopsy</span><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">SQL</span><span class="chip">Forensics</span>
+      </div>
+    </div>
+    <div class="exp-block">
+      <div class="exp-dot" style="background:var(--blue);color:var(--blue)"></div>
+      <div class="exp-when">Jan 2023 – Jun 2023 · 6 mos</div>
+      <div class="exp-title">Senior Software Engineer</div>
+      <div class="exp-co">Capgemini</div>
+      <ul class="exp-bullets">
+        <li>Led vulnerability management via Agile + ServiceNow, remediating <strong>750K+ vulnerabilities</strong> with <strong>97% risk reduction</strong>. Applied logistic regression in Python to intelligently prioritize remediation efforts.</li>
+        <li>Reduced costs by <strong>20%</strong> by automating remote reboots of <strong>20,000 machines</strong> via PowerShell jump server automation, eliminating manual Windows operations.</li>
+        <li>Built custom <strong>Qualys dashboards</strong> for real-time vulnerability monitoring, remediation tracking, and C-suite operational visibility.</li>
+      </ul>
+      <div class="exp-chips">
+        <span class="chip">Qualys</span><span class="chip">ServiceNow</span><span class="chip">PowerShell</span><span class="chip">Python</span><span class="chip">Logistic Regression</span><span class="chip">Agile</span>
+      </div>
+    </div>
+    <div class="exp-block">
+      <div class="exp-dot" style="background:var(--indigo);color:var(--indigo)"></div>
+      <div class="exp-when">Apr 2021 – Dec 2022 · 1.75 yrs</div>
+      <div class="exp-title">Software Engineer</div>
+      <div class="exp-co">Capgemini</div>
+      <ul class="exp-bullets">
+        <li>Identified and remediated security vulnerabilities through OS and application patching across large enterprise fleets.</li>
+        <li>Enhanced security posture by <strong>25%</strong> through structured remediation, addressing <strong>50,000+ vulnerabilities</strong> across multiple systems within two months using Qualys tracking.</li>
+      </ul>
+      <div class="exp-chips">
+        <span class="chip">Qualys</span><span class="chip">OS Patching</span><span class="chip">Vulnerability Tracking</span><span class="chip">Security Hardening</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<div class="wrap" id="projects">
+  <div class="stag">Featured Projects</div>
+  <h2 class="sh">ML Systems Built</h2>
+  <p class="ssub">End-to-end machine learning pipelines and data science solutions   grounded in real datasets and measurable outcomes.</p>
+  <div class="proj-grid">
+    <div class="pc wide">
+      <div class="pc-head">
+        <div class="pc-ico ico-b">🏦</div>
+        <div>
+          <div class="pc-name">ML Model Benchmarking   Bank Marketing Dataset</div>
+          <div class="pc-cat">Classification · Comparative Analysis · Feb–Apr 2025</div>
+        </div>
+      </div>
+      <div class="pc-desc">Benchmarked six supervised classification algorithms on 45,211 records to predict term deposit subscriptions. Full ROC-AUC, F1, precision/recall evaluation suite with stratified splits and cross-validation to select the optimal customer-targeting model.</div>
+      <div class="pc-kpis">
+        <div><div class="kpi-val">6</div><div class="kpi-lbl">Models Benchmarked</div></div>
+        <div><div class="kpi-val">45K</div><div class="kpi-lbl">Records Analyzed</div></div>
+        <div><div class="kpi-val">ROC-AUC</div><div class="kpi-lbl">Primary Metric</div></div>
+      </div>
+      <div class="pc-stack">
+        <span class="stk">Python</span><span class="stk">Scikit-learn</span><span class="stk">Pandas</span><span class="stk">XGBoost</span><span class="stk">Random Forest</span><span class="stk">Logistic Regression</span><span class="stk">Naive Bayes</span><span class="stk">KNN</span>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-head">
+        <div class="pc-ico ico-c">⚡</div>
+        <div>
+          <div class="pc-name">NYC Electricity Demand Forecasting</div>
+          <div class="pc-cat">Time Series · Facebook Prophet · Apr–May 2025</div>
+        </div>
+      </div>
+      <div class="pc-desc">ETL pipeline to clean and aggregate daily/monthly/yearly electricity usage across all NYC boroughs. Facebook Prophet with tuned seasonality and changepoints, validated with MAE, MAPE, R².</div>
+      <div class="pc-kpis">
+        <div><div class="kpi-val">5</div><div class="kpi-lbl">NYC Boroughs</div></div>
+        <div><div class="kpi-val">3</div><div class="kpi-lbl">Forecast Horizons</div></div>
+      </div>
+      <div class="pc-stack">
+        <span class="stk">Python</span><span class="stk">Facebook Prophet</span><span class="stk">Pandas</span><span class="stk">ETL</span><span class="stk">Seaborn</span>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-head">
+        <div class="pc-ico ico-p">🛡️</div>
+        <div>
+          <div class="pc-name">Vulnerability Intelligence Dashboard</div>
+          <div class="pc-cat">Cybersecurity · Enterprise · Capgemini</div>
+        </div>
+      </div>
+      <div class="pc-desc">Custom Qualys dashboards and automated reports for real-time vulnerability monitoring. ServiceNow integration for seamless ticket-to-patch lifecycle. 750K+ vulnerabilities tracked across enterprise client environments.</div>
+      <div class="pc-kpis">
+        <div><div class="kpi-val">750K+</div><div class="kpi-lbl">Vulns Tracked</div></div>
+        <div><div class="kpi-val">97%</div><div class="kpi-lbl">Risk Reduction</div></div>
+      </div>
+      <div class="pc-stack">
+        <span class="stk">Qualys</span><span class="stk">ServiceNow</span><span class="stk">PowerShell</span><span class="stk">SQL</span><span class="stk">Power BI</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="research-inner">
+    <div class="stag">Innovation Lab</div>
+    <h2 class="sh">Research &amp; Publications</h2>
+    <p class="ssub">9 peer-reviewed publications spanning AI, deep learning, IoT security, cloud computing, and autonomous systems   with co-authors at Amity University and international institutions.</p>
+    <div class="scholar-stats">
+      <div class="ss-card"><div class="ss-num" data-t="43">0</div><div class="ss-lbl">Total Citations</div></div>
+      <div class="ss-card"><div class="ss-num" data-t="4">0</div><div class="ss-lbl">h-index</div></div>
+      <div class="ss-card"><div class="ss-num" data-t="2">0</div><div class="ss-lbl">i10-index</div></div>
+      <div class="ss-card"><div class="ss-num" data-t="9">0</div><div class="ss-lbl">Publications</div></div>
+      <div class="ss-card" style="background:rgba(79,142,247,0.04);border-color:rgba(79,142,247,0.12);flex:2;text-align:left;padding:1.25rem 1.5rem">
+        <div style="font-size:0.7rem;color:var(--t3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem">Research Areas</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+          <span style="background:rgba(34,211,238,0.06);border:1px solid rgba(34,211,238,0.14);color:var(--cyan);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:100px">Artificial Intelligence</span>
+          <span style="background:rgba(34,211,238,0.06);border:1px solid rgba(34,211,238,0.14);color:var(--cyan);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:100px">Machine Learning</span>
+          <span style="background:rgba(129,140,248,0.07);border:1px solid rgba(129,140,248,0.15);color:var(--indigo);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:100px">Cyber Security</span>
+          <span style="background:rgba(129,140,248,0.07);border:1px solid rgba(129,140,248,0.15);color:var(--indigo);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:100px">IoT Security</span>
+          <span style="background:rgba(79,142,247,0.07);border:1px solid rgba(79,142,247,0.18);color:#93C5FD;font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:100px">Cloud Computing</span>
+          <span style="background:rgba(79,142,247,0.07);border:1px solid rgba(79,142,247,0.18);color:#93C5FD;font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:100px">Deep Learning</span>
+          <span style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.14);color:var(--teal);font-size:0.72rem;padding:0.2rem 0.6rem;border-radius:100px">Explainable AI</span>
+        </div>
+      </div>
+    </div>
+    <div class="pub-list">
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">Applications of AI in Agriculture</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite">⭐ 14 citations</span>
+            <span class="pub-year">2022</span>
+          </div>
+        </div>
+        <div class="pub-venue">Challenges and Opportunities for Deep Learning Applications in Industry 4.0</div>
+        <div class="pub-authors">T Singh, H Bhadwaj, L Verma, <strong>NR Navadia</strong>, D Singh, A Sakalle, ...</div>
+        <div class="pub-tags"><span class="pub-tag">AI in Agriculture</span><span class="pub-tag">Deep Learning</span><span class="pub-tag">Industry 4.0</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">Applications of Cloud-Based Internet of Things</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite">⭐ 10 citations</span>
+            <span class="pub-year">2021</span>
+          </div>
+        </div>
+        <div class="pub-venue">Integration and Implementation of the Internet of Things Through Cloud Computing</div>
+        <div class="pub-authors"><strong>NR Navadia</strong>, G Kaur, H Bhardwaj, T Singh, A Sakalle, D Acharya, ...</div>
+        <div class="pub-tags"><span class="pub-tag">Cloud Computing</span><span class="pub-tag">IoT</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">Covid-19: Machine Learning Algorithms to Predict Mortality Rate for Advance Testing and Treatment</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite">⭐ 6 citations</span>
+            <span class="pub-year">2021</span>
+          </div>
+        </div>
+        <div class="pub-venue">Soft Computing for Problem Solving: Proceedings of SocProS 2020, Volume 2</div>
+        <div class="pub-authors"><strong>NR Navadia</strong>, G Kaur, I Malik, L Verma, T Singh, H Bhardwaj</div>
+        <div class="pub-tags"><span class="pub-tag">Machine Learning</span><span class="pub-tag">Healthcare AI</span><span class="pub-tag">COVID-19</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">Effects of SARS-COV-2 on Blood</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite">⭐ 6 citations</span>
+            <span class="pub-year">2021</span>
+          </div>
+        </div>
+        <div class="pub-venue">Soft Computing for Problem Solving: Proceedings of SocProS 2020, Volume 2</div>
+        <div class="pub-authors">I Malik, <strong>NR Navadia</strong>, A Jamshed, L Verma, T Singh, H Bhardwaj</div>
+        <div class="pub-tags"><span class="pub-tag">Medical AI</span><span class="pub-tag">SARS-CoV-2</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">A Critical Survey of Autonomous Vehicles</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite">⭐ 3 citations</span>
+            <span class="pub-year">2021</span>
+          </div>
+        </div>
+        <div class="pub-venue">Cyber-Physical, IoT, and Autonomous Systems in Industry 4.0, pp. 235–254</div>
+        <div class="pub-authors"><strong>NR Navadia</strong>, G Kaur, H Bhardwaj, A Sakalle, Y Singh, T Singh, ...</div>
+        <div class="pub-tags"><span class="pub-tag">Autonomous Vehicles</span><span class="pub-tag">Cyber-Physical Systems</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">Brain Hemorrhage Detection Using Deep Learning: Convolutional Neural Network</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite">⭐ 3 citations</span>
+            <span class="pub-year">2021</span>
+          </div>
+        </div>
+        <div class="pub-venue">International Conference on Information Systems and Management Science, pp. 565–570</div>
+        <div class="pub-authors"><strong>NR Navadia</strong>, G Kaur, H Bhardwaj</div>
+        <div class="pub-tags"><span class="pub-tag">Deep Learning</span><span class="pub-tag">CNN</span><span class="pub-tag">Medical Imaging</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">CloudConsumerism: A Consumer-Centric Ranking Model for Efficient Service Mapping in Cloud</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite">⭐ 1 citation</span>
+            <span class="pub-year">2022</span>
+          </div>
+        </div>
+        <div class="pub-venue">Mobile Information Systems 2022 (1), 5960976</div>
+        <div class="pub-authors">Neeraj, N Garg, <strong>NR Navadia</strong>, A Lakhanpal, I Gupta, W Ibrahim, M Raj</div>
+        <div class="pub-tags"><span class="pub-tag">Cloud Computing</span><span class="pub-tag">Ranking Models</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">Analyzing the Role of LIME and SHAP in Explainable DoS Attack Detection for IoT Systems</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite" style="background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.2);color:var(--green)">New · 2025</span>
+          </div>
+        </div>
+        <div class="pub-venue">2025 4th International Conference on Automation, Computing and Renewable Systems</div>
+        <div class="pub-authors">A Paul, S Kumari, <strong>NR Navadia</strong>, S Sinha</div>
+        <div class="pub-tags"><span class="pub-tag">Explainable AI</span><span class="pub-tag">LIME</span><span class="pub-tag">SHAP</span><span class="pub-tag">IoT Security</span><span class="pub-tag">DoS Detection</span></div>
+      </div>
+      <div class="pub">
+        <div class="pub-top">
+          <div class="pub-title">Explainable Intrusion Detection System for Internet of Things: Explainability with Reliability</div>
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0">
+            <span class="pub-cite" style="background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.2);color:var(--green)">New · 2025</span>
+          </div>
+        </div>
+        <div class="pub-venue">2025 5th International Conference on Soft Computing for Security</div>
+        <div class="pub-authors">A Paul, S Kumari, <strong>NR Navadia</strong>, S Sinha</div>
+        <div class="pub-tags"><span class="pub-tag">Intrusion Detection</span><span class="pub-tag">Explainable AI</span><span class="pub-tag">IoT Security</span><span class="pub-tag">Reliability</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div class="wrap" id="skills">
+  <div class="stag">Technical Arsenal</div>
+  <h2 class="sh">The Stack</h2>
+  <p class="ssub">Battle-tested across enterprise security operations and applied ML   every tool here has been shipped with in production.</p>
+  <div class="sk-grid">
+    <div class="sk-group">
+      <div class="sk-cat"><span class="sk-dot" style="background:var(--blue)"></span>Languages &amp; Core</div>
+      <span class="sk-b">Python</span><span class="sk-b">SQL</span><span class="sk-b">PowerShell</span><span class="sk-b">Vibe Coding</span>
+    </div>
+    <div class="sk-group">
+      <div class="sk-cat"><span class="sk-dot" style="background:var(--cyan)"></span>ML &amp; AI</div>
+      <span class="sk-c">Scikit-learn</span><span class="sk-c">PyTorch</span><span class="sk-c">TensorFlow</span><span class="sk-c">Keras</span><span class="sk-c">XGBoost</span><span class="sk-c">Facebook Prophet</span><span class="sk-c">LLMs</span><span class="sk-c">Prompt Engineering</span>
+    </div>
+    <div class="sk-group">
+      <div class="sk-cat"><span class="sk-dot" style="background:var(--indigo)"></span>Cybersecurity</div>
+      <span class="sk-i">Splunk ES</span><span class="sk-i">CrowdStrike Falcon</span><span class="sk-i">Magnet AXIOM</span><span class="sk-i">Qualys</span><span class="sk-i">Autopsy</span><span class="sk-i">SIEM</span><span class="sk-i">Threat Intelligence</span><span class="sk-i">Incident Response</span>
+    </div>
+    <div class="sk-group">
+      <div class="sk-cat"><span class="sk-dot" style="background:var(--teal)"></span>Data &amp; Visualization</div>
+      <span class="sk-t">NumPy</span><span class="sk-t">Pandas</span><span class="sk-t">Matplotlib</span><span class="sk-t">Seaborn</span><span class="sk-t">Power BI</span><span class="sk-t">Tableau</span>
+    </div>
+    <div class="sk-group">
+      <div class="sk-cat"><span class="sk-dot" style="background:var(--blue)"></span>ML Methods</div>
+      <span class="sk-b">Classification</span><span class="sk-b">Time Series</span><span class="sk-b">PCA</span><span class="sk-b">K-Means</span><span class="sk-b">Random Forests</span><span class="sk-b">SVM</span><span class="sk-b">CNN</span><span class="sk-b">XAI</span>
+    </div>
+    <div class="sk-group">
+      <div class="sk-cat"><span class="sk-dot" style="background:var(--indigo)"></span>Tools &amp; Platforms</div>
+      <span class="sk-i">ServiceNow</span><span class="sk-i">Agile / Scrum</span><span class="sk-i">Git</span><span class="sk-i">Relational DBs</span><span class="sk-i">ETL Pipelines</span><span class="sk-i">Cloud (AWS/Azure)</span>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="wrap" id="contact">
+  <div class="ct-box">
+    <div class="ct-avail"><span class="avail-dot"></span>Available · Graduating Dec 2026</div>
+    <div class="ct-title">Let's Work Together</div>
+    <div class="ct-sub">Open to full-time roles in Data Science, AI/ML Engineering, and Cybersecurity   especially where they intersect. Also open to research collaborations on explainable AI and IoT security.</div>
+    <div class="ct-links">
+      <a href="mailto:nipunnavadia@gmail.com" class="cl">✉ Email</a>
+      <a href="tel:7323181705" class="cl">📞 732-318-1705</a>
+      <a href="https://www.linkedin.com/in/nipun-navadia" target="_blank" class="cl">in LinkedIn ↗</a>
+      <a href="https://scholar.google.com/citations?user=3ssD8r8AAAAJ&hl=en" target="_blank" class="cl">📚 Google Scholar ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Nipun Ranchhod Navadia · New York, NY · Data Scientist · AI Engineer · Cybersecurity Researcher · 43 Citations · h-index 4
+</footer>
+
+<script>
+// Hide spline loader once viewer ready
+const viewer = document.querySelector('spline-viewer');
+const loader = document.getElementById('splineLoader');
+if(viewer){
+  viewer.addEventListener('load',()=>{
+    if(loader){loader.style.opacity='0';setTimeout(()=>loader.style.display='none',600)}
+  });
+  // Fallback hide after 8s
+  setTimeout(()=>{if(loader){loader.style.opacity='0';setTimeout(()=>loader.style.display='none',600)}},8000);
+}
+
+// ROLE TYPEWRITER
+const roles=['Data Scientist & AI Engineer','Cybersecurity Researcher','Published Researcher · 43 Citations','ML Systems Builder','Pace University · Dec 2026','Ex-Capgemini Associate Consultant'];
+let ri=0,ci=0,del=false,el=document.getElementById('roleEl');
+function type(){
+  const r=roles[ri];
+  if(!del){el.textContent=r.slice(0,ci++);if(ci>r.length){del=true;setTimeout(type,2000);return}}
+  else{el.textContent=r.slice(0,ci--);if(ci<0){ci=0;del=false;ri=(ri+1)%roles.length}}
+  setTimeout(type,del?35:70);
+}
+type();
+
+// COUNTER ANIMATION
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(!e.isIntersecting)return;
+  const el=e.target,t=parseInt(el.dataset.t);
+  let s=null;
+  function step(ts){
+    if(!s)s=ts;
+    const p=Math.min((ts-s)/1600,1),ease=1-Math.pow(1-p,3),v=Math.round(ease*t);
+    el.textContent=t>=100?v.toLocaleString():v;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);obs.unobserve(el);
+}),{threshold:.5});
+document.querySelectorAll('[data-t]').forEach(el=>obs.observe(el));
+
+// MAGNETIC BUTTONS
+document.querySelectorAll('.btn-p,.btn-o,.nav-hire').forEach(b=>{
+  b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect(),x=(e.clientX-r.left-r.width/2)*.12,y=(e.clientY-r.top-r.height/2)*.12;b.style.transform=`translate(${x}px,${y}px)`});
+  b.addEventListener('mouseleave',()=>b.style.transform='');
+});
+</script>
+</body>
+</html>
